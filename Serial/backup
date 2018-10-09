@@ -1,0 +1,11 @@
+all:    output
+ 25 
+ 26 output: main.o serial.o
+ 27         g++  main.o  serial.o  -o  output                                                                                  
+ 28 main.o:  main.cpp
+ 29         g++  -std=c++11  -c main.cpp 
+ 30 serial.o: Serial_send_rev.cpp  Serial_send_rev.h
+ 31         g++  -std=c++11  -c Serial_send_rev.cpp  -o serial.o
+ 32 clean:
+ 33         rm -rf *.o output
+
