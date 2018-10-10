@@ -21,10 +21,14 @@ others:
 #include <iostream>                                                         
 #include <string.h>
 class Serial {
-private:
-public:
-	int set_opt(int fd,int nSpeed, int nBits, char nEvent, int nStop);
-	int open_port(int fd, int comport);
+	private:
+	public:
+		int set_opt(int fd,int nSpeed, int nBits, char nEvent, int nStop);
+		int open_port(int fd, int comport);
+		void close_port(int fd);
+		int write_data(int fd,char *buff,int size);
+		char * read_data(int fd,int readSize);
+	
 };
 
 #endif

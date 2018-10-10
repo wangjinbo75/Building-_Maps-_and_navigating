@@ -7,8 +7,10 @@ Description:
 	1.  不想用rosserial, h文件与CPP文件分开
 others:
 
-**************************/
+ **************************/
 #include "Serial_send_rev.h" 
+#define MAX_FILE_SIZE 300*1024
+
 int Serial::set_opt(int fd,int nSpeed,int nBits,char nEvent, int nStop)
 {
 	struct termios newtio,oldtio;
@@ -33,16 +35,19 @@ int Serial::set_opt(int fd,int nSpeed,int nBits,char nEvent, int nStop)
 	switch (nEvent)
 	{
 		/*奇校验*/
-		case 'o': newtio.c_cflag |= PARENB;
+		case 'o':
+		case 'O': newtio.c_cflag |= PARENB;
 			  newtio.c_cflag |= (INPCK | ISTRIP);
 			  newtio.c_cflag |= PARODD;
 			  break;
-		/*偶校验*/
+			  /*偶校验*/
+		case 'e':
 		case 'E': newtio.c_cflag |= PARENB;
 			  newtio.c_cflag |= (INPCK | ISTRIP);
 			  newtio.c_cflag &= ~PARODD;
 			  break;
-		/*无校验*/
+			  /*无校验*/
+		case 'n':
 		case 'N': newtio.c_cflag &= ~PARENB;
 			  break;
 	}
@@ -59,8 +64,8 @@ int Serial::set_opt(int fd,int nSpeed,int nBits,char nEvent, int nStop)
 			   cfsetospeed(&newtio, B9600);
 			   break;
 		case 115200: cfsetispeed(&newtio, B115200);
-			   cfsetospeed(&newtio, B115200);
-			   break;
+			     cfsetospeed(&newtio, B115200);
+			     break;
 		default:   cfsetispeed(&newtio, B9600);
 			   cfsetospeed(&newtio, B9600);
 			   break;
@@ -87,11 +92,11 @@ int Serial::set_opt(int fd,int nSpeed,int nBits,char nEvent, int nStop)
 	return 0;
 }
 int Serial::open_port(int fd , int comport)
-{
+{	
 	long vdisable;
 	if (comport == 0)
 	{
-		fd=open("/dev/ttyUSB0"，O_RDWR | O_NOCTTY | O_NDELAY);
+		fd=open("/dev/ttyUSB0",O_RDWR | O_NOCTTY | O_NDELAY);
 		if(fd == -1) 
 		{
 			perror("Can't Open Serial Port");
@@ -121,7 +126,48 @@ int Serial::open_port(int fd , int comport)
 	printf("fd-open= %d\n",fd);
 	return fd;
 }
+void Serial::close_port(int fd)
+{
+	close(fd);
+	printf("close(fd)") ;
+}
 
+int Serial::write_data(int fd,char *buff,int size)
+{
+	if(buff == NULL || size == 0 ||  size >MAX_FILE_SIZE )
+	{
+		return 0;	
+	}
+	int writeSize = write(fd,buff,size);
+	close_port(fd);
+	if(writeSize != size) {
+		return 0;
+	}
+	return writeSize;
+
+}
+char * Serial::read_data(int fd,int readSize)
+{
+	int result;
+	int iRealReadSize = readSize;
+	char *readBuf = (char *) malloc(iRealReadSize);
+	if (NULL == readBuf) {
+		printf("[readBuf] : malloc error\n");
+		return 0;
+	}
+	memset(readBuf,'\0',iRealReadSize); 
+	result = read(fd,readBuf,iRealReadSize); 
+	if(result != iRealReadSize )
+	{
+		printf("[ReadBuf]:mtd read error\r\n");
+		free(readBuf);
+		readBuf = NULL ;
+		close_port(fd);	
+	}
+	printf("[ReadBuf]:end to read  readbuf = %s\r\n", readBuf);
+	close(fd);
+	return readBuf;
+}
 
 
 

@@ -14,8 +14,12 @@ others:
 int main(int argc, char *argv[])
 {
 
+	int fd;
 	Serial m;
-	m.set_opt(8,9600,8,'o',1);
+	fd = m.open_port(0,0);
+	m.set_opt(fd,9600,8,'O',1);
+
+	m.close_port(fd);
 	return 0;
 }
 
