@@ -1,4 +1,4 @@
-all:    output
+ all:    output
  25 
  26 output: main.o serial.o
  27         g++  main.o  serial.o  -o  output                                                                                  
