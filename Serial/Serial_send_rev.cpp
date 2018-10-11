@@ -9,8 +9,19 @@ others:
 
  **************************/
 #include "Serial_send_rev.h" 
+
 #define MAX_FILE_SIZE 300*1024
 
+Serial::Serial(std::string port,int nSpeed,int nBits,char nEvent, int nStop)
+{
+	fd = open_port(port,0,0); 
+	set_opt(fd, nSpeed, nBits, nEvent, nStop);
+	printf("serial \n");	
+}
+Serial::~Serial()
+{
+	printf("~serial \n");	
+}
 int Serial::set_opt(int fd,int nSpeed,int nBits,char nEvent, int nStop)
 {
 	struct termios newtio,oldtio;
@@ -91,12 +102,12 @@ int Serial::set_opt(int fd,int nSpeed,int nBits,char nEvent, int nStop)
 	printf("set done ! \n");
 	return 0;
 }
-int Serial::open_port(int fd , int comport)
+int Serial::open_port(std::string port, int fd , int comport)
 {	
 	long vdisable;
 	if (comport == 0)
 	{
-		fd=open("/dev/ttyUSB0",O_RDWR | O_NOCTTY | O_NDELAY);
+		fd=open(port.c_str(),O_RDWR | O_NOCTTY | O_NDELAY);
 		if(fd == -1) 
 		{
 			perror("Can't Open Serial Port");
@@ -104,7 +115,7 @@ int Serial::open_port(int fd , int comport)
 		}
 		else
 		{
-			printf("open ttyUSB0 ....\n");
+		 	printf("\e[31m\e[1m success:SerialPort%s open \e[0m\n",port.c_str());
 		}
 	}
 	if(fcntl(fd,F_SETFL,0) < 0)
@@ -126,27 +137,26 @@ int Serial::open_port(int fd , int comport)
 	printf("fd-open= %d\n",fd);
 	return fd;
 }
-void Serial::close_port(int fd)
+void Serial::close_port()
 {
 	close(fd);
-	printf("close(fd)") ;
+//	printf("close(fd)\n") ;
 }
 
-int Serial::write_data(int fd,char *buff,int size)
+int Serial::write_data(char *buff,int size)
 {
 	if(buff == NULL || size == 0 ||  size >MAX_FILE_SIZE )
 	{
+		printf("buff error\n");
 		return 0;	
 	}
 	int writeSize = write(fd,buff,size);
-	close_port(fd);
-	if(writeSize != size) {
-		return 0;
-	}
+	close_port();
+	sleep(1); //1s
 	return writeSize;
 
 }
-char * Serial::read_data(int fd,int readSize)
+char * Serial::read_data(int readSize)
 {
 	int result;
 	int iRealReadSize = readSize;
@@ -155,14 +165,14 @@ char * Serial::read_data(int fd,int readSize)
 		printf("[readBuf] : malloc error\n");
 		return 0;
 	}
-	memset(readBuf,'\0',iRealReadSize); 
+	memset(readBuf,'\0',iRealReadSize);
 	result = read(fd,readBuf,iRealReadSize); 
 	if(result != iRealReadSize )
 	{
 		printf("[ReadBuf]:mtd read error\r\n");
 		free(readBuf);
 		readBuf = NULL ;
-		close_port(fd);	
+		close_port();	
 	}
 	printf("[ReadBuf]:end to read  readbuf = %s\r\n", readBuf);
 	close(fd);

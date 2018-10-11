@@ -14,12 +14,30 @@ others:
 int main(int argc, char *argv[])
 {
 
-	int fd;
-	Serial m;
-	fd = m.open_port(0,0);
-	m.set_opt(fd,9600,8,'O',1);
+	int  fd;
+	// 01 03 03 00 00 1C 44 47
+	char buff[] = "abc";
+	Serial m("/dev/ttyUSB0",9600,8,'O',1);
 
-	m.close_port(fd);
+	std::cout <<"buff_size = " << sizeof(buff) << std::endl;
+	
+	while(1){
+
+	std::cout<< "write_data " <<m.write_data(buff,sizeof(buff))<<std::endl;
+		
+		if(sizeof(buff) == m.write_data(buff,sizeof(buff)) ) 
+		{
+			printf("write yes");
+		}
+		/*
+		char * ret = m.read_data(fd,6);
+		if( ret == NULL ) 
+		{
+			printf("ret == NULL\n");
+		}
+		*/
+	}
+	m.close_port();
 	return 0;
 }
 

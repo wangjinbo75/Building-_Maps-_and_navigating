@@ -9,25 +9,31 @@ others:
 #define SERIAL_SEND_REV_H
 
 #include <stdio.h>	/*标准输入输出的定义*/
-#include <unistd.h>	/*UNIX 标准函数定义*/
 #include <stdlib.h>	/*标准函数库定义*/
+#include <unistd.h>	/*UNIX 标准函数定义*/
 #include <fcntl.h>	/*文件控制定义*/   
+#include <termios.h>    /* POSIX中断控制定义*/ 
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <termios.h> 
 #include <fstream>
+
 #include <thread>
 #include <vector>
 #include <iostream>                                                         
+#include <string>
+
 #include <string.h>
 class Serial {
-	private:
 	public:
+		Serial(std::string port,int nSpeed,int nBits,char nEvent, int nStop);
+		~Serial();
 		int set_opt(int fd,int nSpeed, int nBits, char nEvent, int nStop);
-		int open_port(int fd, int comport);
-		void close_port(int fd);
-		int write_data(int fd,char *buff,int size);
-		char * read_data(int fd,int readSize);
+		int open_port(std::string port,int fd, int comport);
+		void close_port();
+		int write_data(char *buff,int size);
+		char * read_data(int readSize);
+	private:
+		int fd;
 	
 };
 
