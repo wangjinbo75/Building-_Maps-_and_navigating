@@ -16,6 +16,7 @@ Serial::Serial(std::string port,int nSpeed,int nBits,char nEvent, int nStop)
 {
 	fd = open_port(port,0,0); 
 	set_opt(fd, nSpeed, nBits, nEvent, nStop);
+	sleep(1);
 	printf("serial \n");	
 }
 Serial::~Serial()
@@ -151,8 +152,8 @@ int Serial::write_data(char *buff,int size)
 		return 0;	
 	}
 	int writeSize = write(fd,buff,size);
-	close_port();
-	sleep(1); //1s
+	//close_port();
+	//sleep(0.6); //1s
 	return writeSize;
 
 }
@@ -165,17 +166,18 @@ char * Serial::read_data(int readSize)
 		printf("[readBuf] : malloc error\n");
 		return 0;
 	}
-	memset(readBuf,'\0',iRealReadSize);
+	memset(readBuf,0,iRealReadSize);
 	result = read(fd,readBuf,iRealReadSize); 
+	//sleep(0.6);
 	if(result != iRealReadSize )
 	{
 		printf("[ReadBuf]:mtd read error\r\n");
 		free(readBuf);
 		readBuf = NULL ;
-		close_port();	
+		//close_port();	
 	}
-	printf("[ReadBuf]:end to read  readbuf = %s\r\n", readBuf);
-	close(fd);
+	//printf("[ReadBuf]:end to read  readbuf = %s ,result = %d \r\n",readBuf,result);
+	//close_port();
 	return readBuf;
 }
 

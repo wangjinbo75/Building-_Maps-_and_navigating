@@ -17,8 +17,8 @@
 #	rm $(BIN)
 
 CC=g++
-CFlAGS=-c -Wall			#表示用于 C 编译器的选项  CFLAGS： 指定头文件（.h文件）的路径
-CXXFLAGS=g++  -std=c++11  -c  	#-Wall -pedantic #CXXFLAGS 表示用于 C++ 编译器的选项
+CFlAGS=-c -Wl			#表示用于 C 编译器的选项  CFLAGS： 指定头文件（.h文件）的路径
+CXXFLAGS=g++  -std=c++11 -c  	#-Wall -pedantic #CXXFLAGS 表示用于 C++ 编译器的选项
 
 
 all: 	output
