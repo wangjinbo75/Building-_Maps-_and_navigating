@@ -5,6 +5,9 @@ Time: 2018年 10月 09日 星期二 14:38:51 CST
 Author: fish
 Description:
 	1.  不想用rosserial, h文件与CPP文件分开
+	2.  接收到数据类型，unsigned char * , c++ 不能返回数组
+	3.  使用new 的时候，需要 动态内存 sizeof(数组名）  为字符的大小
+	4.  使用了 Readbuf[]  接收数据  全局
 others:
 
  **************************/
@@ -14,15 +17,24 @@ others:
 
 Serial::Serial(std::string port,int nSpeed,int nBits,char nEvent, int nStop)
 {
+	
 	fd = open_port(port,0,0); 
 	set_opt(fd, nSpeed, nBits, nEvent, nStop);
-	sleep(1);
+	sleep(3);
 	printf("serial \n");	
 }
 Serial::~Serial()
 {
+	close_port();
 	printf("~serial \n");	
 }
+/**
+* 设置串口数据，校验位,速率，停止位
+* @param nBits 类型 int数据位 取值 位7或8
+* @param nEvent 类型 char 校验类型 取值N ,E, O,,S
+* @param mSpeed 类型 int 速率 取值 2400,4800,9600,115200
+* @param mStop 类型 int 停止位 取值1 或者 2
+*/
 int Serial::set_opt(int fd,int nSpeed,int nBits,char nEvent, int nStop)
 {
 	struct termios newtio,oldtio;
@@ -144,7 +156,7 @@ void Serial::close_port()
 //	printf("close(fd)\n") ;
 }
 
-int Serial::write_data(char *buff,int size)
+int Serial::write_data(unsigned char *buff,int size)
 {
 	if(buff == NULL || size == 0 ||  size >MAX_FILE_SIZE )
 	{
@@ -152,33 +164,43 @@ int Serial::write_data(char *buff,int size)
 		return 0;	
 	}
 	int writeSize = write(fd,buff,size);
+	//printf("writedata size: %i \r\n",writeSize);
 	//close_port();
 	//sleep(0.6); //1s
 	return writeSize;
 
 }
-char * Serial::read_data(int readSize)
+void Serial::read_data(int RecvSize)
 {
 	int result;
-	int iRealReadSize = readSize;
-	char *readBuf = (char *) malloc(iRealReadSize);
-	if (NULL == readBuf) {
-		printf("[readBuf] : malloc error\n");
-		return 0;
-	}
-	memset(readBuf,0,iRealReadSize);
-	result = read(fd,readBuf,iRealReadSize); 
-	//sleep(0.6);
-	if(result != iRealReadSize )
+	int RealReadSize = RecvSize;
+	
+	//unsigned char *readBuf = (unsigned char *) malloc(iRealReadSize);  //c语言用动态内存分配
+	unsigned char *readBuf = new unsigned char[RealReadSize];	     //new c++  动态内存分配
+	
+	bzero(readBuf,RealReadSize);
+	bzero(Readbuf,RealReadSize);
+	
+	//printf( "sizeof(readBuf) = %lu sizeof(ReadBuf) = %lu   \n" ,sizeof(readBuf),sizeof(Readbuf) );
+	
+	while( (result = read(fd,readBuf,RealReadSize)) >0)
 	{
-		printf("[ReadBuf]:mtd read error\r\n");
-		free(readBuf);
-		readBuf = NULL ;
-		//close_port();	
+		printf("result = %d \n", result);
+		for(int i=0 ;i < result; i++)
+		{    
+			//printf("hex recv = %x\n",readBuf[i]);
+			Readbuf[i]= readBuf[i];	
+		}
 	}
-	//printf("[ReadBuf]:end to read  readbuf = %s ,result = %d \r\n",readBuf,result);
-	//close_port();
-	return readBuf;
+	//readBufShow = readBuf;
+	for(int i=0 ;i < 17;i++)
+	{    
+		//printf("hex recv = %x\n",Readbuf[i]);
+	}
+	
+	delete []readBuf;
+
+	//return readBuf;
 }
 
 

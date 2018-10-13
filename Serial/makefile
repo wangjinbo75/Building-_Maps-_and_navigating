@@ -16,18 +16,19 @@
 #	rm -f *.o
 #	rm $(BIN)
 
-CC=g++
+CC=clang++
 CFlAGS=-c -Wl			#表示用于 C 编译器的选项  CFLAGS： 指定头文件（.h文件）的路径
-CXXFLAGS=g++  -std=c++11 -c  	#-Wall -pedantic #CXXFLAGS 表示用于 C++ 编译器的选项
+CXXFLAGS=clang++  -std=c++11 -c  	#-Wall -pedantic #CXXFLAGS 表示用于 C++ 编译器的选项
+LDFLAGS=-pthread		#有线程 必须加上
 
 
 all: 	output
 
 output:	main.o serial.o
-	$(CC)  main.o  serial.o  -o  output
+	$(CC)  $(LDFLAGS) main.o  serial.o  -o  output
 main.o:  main.cpp 
-	$(CXXFLAGS)  main.cpp 
+	$(CXXFLAGS) $(LDFLAGS) main.cpp 
 serial.o: Serial_send_rev.cpp  Serial_send_rev.h
-	$(CXXFLAGS)  Serial_send_rev.cpp  -o serial.o
+	$(CXXFLAGS) $(LDFLAGS) Serial_send_rev.cpp  -o serial.o
 clean:
 	rm -rf *.o output

@@ -13,6 +13,7 @@ others:
 #include <unistd.h>	/*UNIX 标准函数定义*/
 #include <fcntl.h>	/*文件控制定义*/   
 #include <termios.h>    /* POSIX中断控制定义*/ 
+#include <errno.h> 	/*错误号定义*/
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fstream>
@@ -21,20 +22,28 @@ others:
 #include <vector>
 #include <iostream>                                                         
 #include <string>
+#include <functional>
 
 #include <string.h>
+
+#define BUFFERSIZE 17	//缓存大小
 class Serial {
 	public:
-		Serial(std::string port,int nSpeed,int nBits,char nEvent, int nStop);
+		unsigned char Readbuf[BUFFERSIZE];
+		
+		Serial(std::string port,int nSpeed,int nBits,char nEvent, int nStop)  ;
 		~Serial();
 		int set_opt(int fd,int nSpeed, int nBits, char nEvent, int nStop);
 		int open_port(std::string port,int fd, int comport);
 		void close_port();
-		int write_data(char *buff,int size);
-		char * read_data(int readSize);
+		int write_data(unsigned char *buff,int size);
+		void read_data(int RecvSize);
 	private:
 		int fd;
-	
+		std::thread recv_data;                                                       
+		std::thread send_data;
+		
+		long m_nBuffLength;
 };
 
 #endif
