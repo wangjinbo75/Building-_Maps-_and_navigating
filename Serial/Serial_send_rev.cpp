@@ -8,6 +8,7 @@ Description:
 	2.  接收到数据类型，unsigned char * , c++ 不能返回数组
 	3.  使用new 的时候，需要 动态内存 sizeof(数组名）  为字符的大小
 	4.  使用了 Readbuf[]  接收数据  全局
+	5.  竟然很奇怪，只能一次性读20个字节 缓存给的太小
 others:
 
  **************************/
@@ -182,13 +183,13 @@ void Serial::read_data(int RecvSize)
 	bzero(Readbuf,RealReadSize);
 	
 	//printf( "sizeof(readBuf) = %lu sizeof(ReadBuf) = %lu   \n" ,sizeof(readBuf),sizeof(Readbuf) );
-	
+
 	while( (result = read(fd,readBuf,RealReadSize)) >0)
 	{
 		printf("result = %d \n", result);
 		for(int i=0 ;i < result; i++)
 		{    
-			//printf("hex recv = %x\n",readBuf[i]);
+		//	printf("hex recv = %x\n",readBuf[i]);
 			Readbuf[i]= readBuf[i];	
 		}
 	}

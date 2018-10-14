@@ -26,7 +26,8 @@ others:
 
 #include <string.h>
 
-#define BUFFERSIZE 17	//缓存大小
+#define  BUFFERSIZE 36	//缓存大小
+
 class Serial {
 	public:
 		unsigned char Readbuf[BUFFERSIZE];
