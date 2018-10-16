@@ -18,15 +18,21 @@ others:
 
 Serial::Serial(std::string port,int nSpeed,int nBits,char nEvent, int nStop)
 {
+	Start = clock();
 	
 	fd = open_port(port,0,0); 
 	set_opt(fd, nSpeed, nBits, nEvent, nStop);
-	sleep(3);
+	//recv_thread.join();
+	//read_data.detach();
+	//send_thread.detach();
+	sleep(1);
 	printf("serial \n");	
 }
 Serial::~Serial()
 {
 	close_port();
+	End =clock()-Start;
+	std::cout <<GREEN<<"Time consume : "<<(long int)End/CLOCKS_PER_SEC<<RESET<<"\n";
 	printf("~serial \n");	
 }
 /**
@@ -173,6 +179,9 @@ int Serial::write_data(unsigned char *buff,int size)
 }
 void Serial::read_data(int RecvSize)
 {
+//	std::thread::id  thread_A_id = std::this_thread::get_id();
+//	std::cout <<BLUE<<"recv_thread = "<< thread_A_id <<RESET<<"\n";
+	
 	int result;
 	int RealReadSize = RecvSize;
 	

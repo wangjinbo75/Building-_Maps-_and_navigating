@@ -19,38 +19,43 @@ void sensor_data(unsigned char ReadBuf[],int BufSize)
 	for(int i = 3,j = 1; i<	(BufSize-7) ; i+=7,j++)
 	{
 		unsigned char status;
+		char BitsFlags = true;
 		status =ReadBuf[i];
-		printf("连接号 %d  status : ",j);
+		printf("\e[36m\e[1m连接号 %d  status : \e[0m",j);
 
 		switch(status) {
-			case 0x00 : printf("\e[31m\e[1m正常\e[0m\n");
-				    printf("	  ");
-				    printf("浓度值 : %x%x.%x% \n",ReadBuf[i+1],ReadBuf[i+2],ReadBuf[i+3]);
+			case 0x00 : printf("\e[32m\e[1m正常\e[0m\n");
 				    break;
-			case 0x01 : printf("低报\n");
+			case 0x01 : printf("\e[33m\e[1m低报\e[0m\n");
 				    break;
-			case 0x02 : printf("高报\n");
+			case 0x02 : printf("\e[31m\e[1m高报\e[0m\n");
 				    break;
-			case 0x04 : printf("通讯故障\n");
+			case 0x04 : printf("\e[36m\e[1m无数据\e[0m\n");
+				    BitsFlags = false;
 				    break;
 			case 0x06 : printf("传感器故障\n");
+				    BitsFlags = false;
 				    break;
 		}
 		/*小数位*/
 		unsigned char bits;
 		bits  = ReadBuf[i+4];
-		printf("	  ");
-		switch(bits) {
-			case 0x00 : printf("无小数 \n");
-				    break;
-			case 0x01 : printf("1位小数 \n");
-				    break;
-			case 0x02 : printf("2位小数 \n");
-				    break;
-			case 0x03 : printf("3位小数 \n");
-				    break;
-			case 0x04 : printf("4位小数 \n");
-				    break;
+		if(BitsFlags == true)
+		{
+			switch(bits) {
+				case 0x00 : printf("	  无小数 \n");
+					    break;
+				case 0x01 : printf("	  1位小数 \n");
+					    break;
+				case 0x02 : printf("	  2位小数 \n");
+					    break;
+				case 0x03 : printf("	  3位小数 \n");
+					    break;
+				case 0x04 : printf("      4位小数 \n");
+					    break;
+			}
+		/*浓度值*/
+		printf("	  浓度值 : %x%x%x \n",ReadBuf[i+1],ReadBuf[i+2],ReadBuf[i+3]);
 		}
 		/*气体名称*/
 		unsigned char GasName;
@@ -107,7 +112,7 @@ int main(int argc, char *argv[])
 	printf("sizeof(p) = %lu \n",sizeof(p) );
 	delete [] p;
 
-	int i = 3 ;
+	long int i = 1000000 ;
 	while(i--)
 	{	
 		//if(sizeof(buff1) == m.write_data(buff1,sizeof(buff1)) ) 

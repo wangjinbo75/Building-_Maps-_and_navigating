@@ -25,9 +25,19 @@ others:
 #include <functional>
 
 #include <string.h>
+#include <time.h>
+
+#define RESET   "\033[0m"
+#define BLACK   "\033[30m"      /* Black */
+#define RED     "\033[31m"      /* Red */
+#define GREEN   "\033[32m"      /* Green */
+#define YELLOW  "\033[33m"      /* Yellow */
+#define BLUE    "\033[34m"      /* Blue */
+#define MAGENTA "\033[35m"      /* Magenta */
+#define CYAN    "\033[36m"      /* Cyan */
+#define WHITE   "\033[37m"      /* White */
 
 #define  BUFFERSIZE 36	//缓存大小
-
 class Serial {
 	public:
 		unsigned char Readbuf[BUFFERSIZE];
@@ -41,10 +51,9 @@ class Serial {
 		void read_data(int RecvSize);
 	private:
 		int fd;
-		std::thread recv_data;                                                       
-		std::thread send_data;
-		
-		long m_nBuffLength;
+		std::thread recv_thread;                                                       
+		std::thread send_thread;
+		clock_t Start,End;
 };
 
 #endif
