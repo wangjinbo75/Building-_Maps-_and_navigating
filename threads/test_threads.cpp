@@ -4,7 +4,7 @@ Time: 2018年 10月 12日 星期五 09:24:59 CST
 Author: fish
 Description: 	
 	1.想练习一下，c++ 线程
-	2.
+	2.2018年 10月 17日 星期三 09:30:59 CST 出现了线程不同步 
 others:
 	char *p = new char[10];
         printf("sizeof(p) = %lu \n",sizeof(p) );
@@ -33,6 +33,7 @@ others:
 #include <functional>
 //#include <chrono>         // std::chrono::seconds
 #include <sys/time.h>
+#include <mutex>
 
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"      /* Black */
@@ -43,11 +44,13 @@ others:
 #define MAGENTA "\033[35m"      /* Magenta */
 #define CYAN    "\033[36m"      /* Cyan */
 #define WHITE   "\033[37m"      /* White */
+
 std::thread::id  main_thread_id = std::this_thread::get_id();
+std::mutex mtx;
 
 class test_thread
 {
-	public:
+	public :
 		test_thread(int m ) :n(m),testThread_( std::bind(&test_thread::print,this) )
 		{
 	//		testThread_.join();
@@ -65,6 +68,7 @@ class test_thread
 			{
 				std::cout << "This is the main thread. \n";
 			}
+		
 			else 
 			{
 				std::cout << "class testThread_id 3 = "<< testThread_id <<"\n";
@@ -104,21 +108,33 @@ long int get_current_time()
 	//std::cout <<GREEN<<"second: is "<<tv.tv_sec<<RESET<<"\n";
 	//std::cout <<GREEN<<"millisecond: is "<<tv.tv_sec*1000+tv.tv_usec/1000<<RESET<<"\n";
 	//std::cout <<GREEN<<"microsecond: is "<<tv.tv_sec*1000000+tv.tv_usec<<RESET<<"\n";
-	return tv.tv_sec*1000000+tv.tv_usec;//毫秒
+	return tv.tv_sec*1000000+ tv.tv_usec ;//微秒
 }
 void thread_A(const char *what)
 {
-//	using namespace std::literals::chrono_literals;
+	//	using namespace std::literals::chrono_literals;
+	mtx.lock();
 	std::thread::id  thread_A_id = std::this_thread::get_id();
 	std::cout << "thread_A_id 1 = "<< thread_A_id <<"\n";
 	std::cout << "	what = "<< what <<"\n";
+	std::cout << "thread_A : ";
+	for(int i = 0; i < 10 ;i++)
+	{
+		std::cout<<YELLOW<< i <<RESET;
+		sleep(1);
+	}
+	std::cout << "\n";
+	mtx.unlock();
+
 }
 void thread_B(const char *what)
 {
+	mtx.lock();
 //	using namespace std::literals::chrono_literals;
 	std::thread::id  thread_B_id = std::this_thread::get_id();
 	std::cout << "thread_B_id 2 = "<< thread_B_id <<"\n";
 	std::cout << "	what = "<< what <<"\n";
+	mtx.unlock();
 }
 int main(int argc, char *argv[])
 {
@@ -132,15 +148,14 @@ int main(int argc, char *argv[])
 	detach 非阻塞模式    （thread id 在 主函数一样 ）
 */	
 	std::thread work1(&thread_A,"work1");
-	work1.detach();
+	work1.join();
 	t1 = get_current_time();
-	sleep(1);  // 秒
 	std::cout <<GREEN<<"use time:  "<<(double)(t1-t0)/1000000<<"s"<<RESET<<"\n";
 	
 	std::thread work2(&thread_B,"work2");
-	work2.detach();
+	work2.join();
 	t2 = get_current_time();
-	sleep(1);  // 秒
+//	sleep(1);  // 秒
 	std::cout <<GREEN<<"use time:  "<<(double)(t2-t1)/1000000<<"s"<<RESET<<"\n";
 	
 //	std::cin.get();   //等待ENTER 按下
@@ -162,7 +177,7 @@ int main(int argc, char *argv[])
 //	std::thread work2(&test_thread::print1,test);
 //	work2.join();
 	
-	sleep(1);  // 秒
+//	sleep(50);  // 秒
 	std::cout << "completed ... \n";
 	return 0;
 }
