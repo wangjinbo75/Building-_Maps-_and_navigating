@@ -188,7 +188,8 @@ void Serial::read_data(int RecvSize)
 	unsigned char *readBuf = new unsigned char[RealReadSize];	     //new c++  动态内存分配
 	
 	bzero(readBuf,RealReadSize);
-	bzero(Readbuf,RealReadSize);
+
+	bzero(Readbuf,RealReadSize);  // Readbuf   是个全局变量
 	
 	//printf( "sizeof(readBuf) = %lu sizeof(ReadBuf) = %lu   \n" ,sizeof(readBuf),sizeof(Readbuf) );
 

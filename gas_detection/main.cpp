@@ -10,6 +10,7 @@ others:
 		usleep(500*1000); //500毫秒
 **************************/
 #include <iostream>
+#include <sstream>
 #include "Serial_send_rev.h" 
 void sensor_data(unsigned char ReadBuf[],int BufSize)
 {
@@ -41,20 +42,36 @@ void sensor_data(unsigned char ReadBuf[],int BufSize)
 		bits  = ReadBuf[i+4];
 		if(BitsFlags == true)
 		{
+			/*浓度值*/
+			int a[3] ={0};
+			int b[3] ={0};
+			for(int n=0;n<3;n++) {
+				b[n] = (  ReadBuf[i+1+n] & 0x0f );
+				a[n] = ( (ReadBuf[i+1+n] & 0xf0) >> 4 );
+			}
+			float sum = a[0]*100000+b[0]*10000+a[1]*1000+b[1]*100+a[2]*10+b[2];
+			//	printf("ReadBuf[i+3] = %x \n",ReadBuf[i+3]);
+			//	printf("high4[2] = %d , low4[2]= %d \n",a2,a1);
+			//	printf("a3 = %d \n",a1+a2*10);
+			//float sum = a6*100000+a5*10000+a4*1000+a3*100+a2*10+a1;
 			switch(bits) {
 				case 0x00 : printf("	  无小数 \n");
+							printf("	  浓度值 : %f \n",sum);
 					    break;
 				case 0x01 : printf("	  1位小数 \n");
+							printf("	  浓度值 : %f \n",sum/10);
 					    break;
 				case 0x02 : printf("	  2位小数 \n");
+							printf("	  浓度值 : %f \n",sum/100);
 					    break;
 				case 0x03 : printf("	  3位小数 \n");
+							printf("	  浓度值 : %f \n",sum/1000);
 					    break;
 				case 0x04 : printf("      4位小数 \n");
 					    break;
 			}
-		/*浓度值*/
-		printf("	  浓度值 : %x%x%x \n",ReadBuf[i+1],ReadBuf[i+2],ReadBuf[i+3]);
+		
+		//printf("	    浓度值 : %x%x%x \n",ReadBuf[i+1],ReadBuf[i+2],ReadBuf[i+3]);
 		}
 		/*气体名称*/
 		unsigned char GasName;
@@ -111,13 +128,15 @@ int main(int argc, char *argv[])
 	printf("sizeof(p) = %lu \n",sizeof(p) );
 	delete [] p;
 
+
+    
 	long int i = 1000000 ;
 	while(i--)
 	{	
 		//if(sizeof(buff1) == m.write_data(buff1,sizeof(buff1)) ) 
 		if(sizeof(buff2) == m.write_data(buff2,sizeof(buff2)) ) 
 		{
-			printf("count: %i write yes ! \n",i);
+			printf("count: %li write yes ! \n",i);
 		}
 		usleep(500*1000); //500毫秒
 		int BufSize  = 33;
