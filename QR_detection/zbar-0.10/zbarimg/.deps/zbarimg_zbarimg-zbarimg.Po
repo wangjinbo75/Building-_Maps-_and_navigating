@@ -1,0 +1,496 @@
+zbarimg/zbarimg_zbarimg-zbarimg.o: zbarimg/zbarimg.c \
+ /usr/include/stdc-predef.h include/config.h /usr/include/stdlib.h \
+ /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h \
+ /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+ /usr/include/x86_64-linux-gnu/bits/types.h \
+ /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap-16.h \
+ /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/time.h \
+ /usr/include/x86_64-linux-gnu/sys/select.h \
+ /usr/include/x86_64-linux-gnu/bits/select.h \
+ /usr/include/x86_64-linux-gnu/bits/sigset.h \
+ /usr/include/x86_64-linux-gnu/bits/time.h \
+ /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
+ /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/stdio.h \
+ /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+ /usr/include/xlocale.h /usr/include/unistd.h \
+ /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h \
+ /usr/include/x86_64-linux-gnu/sys/times.h /usr/include/assert.h \
+ include/zbar.h /usr/local/include/wand/MagickWand.h \
+ /usr/local/include/ImageMagick-7/MagickCore/magick-config.h \
+ /usr/local/include/ImageMagick-7/MagickCore/magick-baseconfig.h \
+ /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+ /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+ /usr/include/x86_64-linux-gnu/bits/huge_val.h \
+ /usr/include/x86_64-linux-gnu/bits/huge_valf.h \
+ /usr/include/x86_64-linux-gnu/bits/huge_vall.h \
+ /usr/include/x86_64-linux-gnu/bits/inf.h \
+ /usr/include/x86_64-linux-gnu/bits/nan.h \
+ /usr/include/x86_64-linux-gnu/bits/mathdef.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+ /usr/local/include/ImageMagick-7/MagickWand/method-attribute.h \
+ /usr/local/include/ImageMagick-7/MagickCore/MagickCore.h \
+ /usr/local/include/ImageMagick-7/MagickCore/method-attribute.h \
+ /usr/local/include/ImageMagick-7/MagickCore/magick-type.h \
+ /usr/local/include/ImageMagick-7/MagickCore/animate.h \
+ /usr/local/include/ImageMagick-7/MagickCore/annotate.h \
+ /usr/local/include/ImageMagick-7/MagickCore/draw.h \
+ /usr/local/include/ImageMagick-7/MagickCore/geometry.h \
+ /usr/local/include/ImageMagick-7/MagickCore/image.h \
+ /usr/local/include/ImageMagick-7/MagickCore/blob.h \
+ /usr/local/include/ImageMagick-7/MagickCore/stream.h \
+ /usr/local/include/ImageMagick-7/MagickCore/pixel.h \
+ /usr/local/include/ImageMagick-7/MagickCore/colorspace.h \
+ /usr/local/include/ImageMagick-7/MagickCore/cache-view.h \
+ /usr/local/include/ImageMagick-7/MagickCore/color.h \
+ /usr/local/include/ImageMagick-7/MagickCore/exception.h \
+ /usr/local/include/ImageMagick-7/MagickCore/semaphore.h \
+ /usr/local/include/ImageMagick-7/MagickCore/composite.h \
+ /usr/local/include/ImageMagick-7/MagickCore/compress.h \
+ /usr/local/include/ImageMagick-7/MagickCore/effect.h \
+ /usr/local/include/ImageMagick-7/MagickCore/morphology.h \
+ /usr/local/include/ImageMagick-7/MagickCore/layer.h \
+ /usr/local/include/ImageMagick-7/MagickCore/locale_.h \
+ /usr/local/include/ImageMagick-7/MagickCore/linked-list.h \
+ /usr/local/include/ImageMagick-7/MagickCore/monitor.h \
+ /usr/local/include/ImageMagick-7/MagickCore/profile.h \
+ /usr/local/include/ImageMagick-7/MagickCore/string_.h \
+ /usr/local/include/ImageMagick-7/MagickCore/quantum.h \
+ /usr/local/include/ImageMagick-7/MagickCore/resample.h \
+ /usr/local/include/ImageMagick-7/MagickCore/resize.h \
+ /usr/local/include/ImageMagick-7/MagickCore/timer.h \
+ /usr/local/include/ImageMagick-7/MagickCore/type.h \
+ /usr/local/include/ImageMagick-7/MagickCore/artifact.h \
+ /usr/local/include/ImageMagick-7/MagickCore/attribute.h \
+ /usr/local/include/ImageMagick-7/MagickCore/cache.h \
+ /usr/local/include/ImageMagick-7/MagickCore/channel.h \
+ /usr/local/include/ImageMagick-7/MagickCore/cipher.h \
+ /usr/local/include/ImageMagick-7/MagickCore/client.h \
+ /usr/local/include/ImageMagick-7/MagickCore/coder.h \
+ /usr/local/include/ImageMagick-7/MagickCore/colormap.h \
+ /usr/local/include/ImageMagick-7/MagickCore/compare.h \
+ /usr/local/include/ImageMagick-7/MagickCore/configure.h \
+ /usr/local/include/ImageMagick-7/MagickCore/constitute.h \
+ /usr/local/include/ImageMagick-7/MagickCore/decorate.h \
+ /usr/local/include/ImageMagick-7/MagickCore/delegate.h \
+ /usr/local/include/ImageMagick-7/MagickCore/deprecate.h \
+ /usr/local/include/ImageMagick-7/MagickCore/magick.h \
+ /usr/local/include/ImageMagick-7/MagickCore/display.h \
+ /usr/local/include/ImageMagick-7/MagickCore/distort.h \
+ /usr/local/include/ImageMagick-7/MagickCore/distribute-cache.h \
+ /usr/local/include/ImageMagick-7/MagickCore/enhance.h \
+ /usr/local/include/ImageMagick-7/MagickCore/feature.h \
+ /usr/local/include/ImageMagick-7/MagickCore/fourier.h \
+ /usr/local/include/ImageMagick-7/MagickCore/fx.h \
+ /usr/local/include/ImageMagick-7/MagickCore/gem.h \
+ /usr/local/include/ImageMagick-7/MagickCore/random_.h \
+ /usr/local/include/ImageMagick-7/MagickCore/histogram.h \
+ /usr/local/include/ImageMagick-7/MagickCore/identify.h \
+ /usr/local/include/ImageMagick-7/MagickCore/image-view.h \
+ /usr/local/include/ImageMagick-7/MagickCore/list.h \
+ /usr/local/include/ImageMagick-7/MagickCore/log.h \
+ /usr/local/include/ImageMagick-7/MagickCore/magic.h \
+ /usr/local/include/ImageMagick-7/MagickCore/matrix.h \
+ /usr/local/include/ImageMagick-7/MagickCore/memory_.h \
+ /usr/local/include/ImageMagick-7/MagickCore/module.h \
+ /usr/local/include/ImageMagick-7/MagickCore/version.h \
+ /usr/local/include/ImageMagick-7/MagickCore/mime.h \
+ /usr/local/include/ImageMagick-7/MagickCore/montage.h \
+ /usr/local/include/ImageMagick-7/MagickCore/opencl.h \
+ /usr/local/include/ImageMagick-7/MagickCore/option.h \
+ /usr/local/include/ImageMagick-7/MagickCore/paint.h \
+ /usr/local/include/ImageMagick-7/MagickCore/pixel-accessor.h \
+ /usr/local/include/ImageMagick-7/MagickCore/policy.h \
+ /usr/local/include/ImageMagick-7/MagickCore/prepress.h \
+ /usr/local/include/ImageMagick-7/MagickCore/property.h \
+ /usr/local/include/ImageMagick-7/MagickCore/quantize.h \
+ /usr/local/include/ImageMagick-7/MagickCore/registry.h \
+ /usr/local/include/ImageMagick-7/MagickCore/resource_.h \
+ /usr/local/include/ImageMagick-7/MagickCore/segment.h \
+ /usr/local/include/ImageMagick-7/MagickCore/shear.h \
+ /usr/local/include/ImageMagick-7/MagickCore/signature.h \
+ /usr/local/include/ImageMagick-7/MagickCore/splay-tree.h \
+ /usr/local/include/ImageMagick-7/MagickCore/static.h \
+ /usr/local/include/ImageMagick-7/MagickCore/statistic.h \
+ /usr/local/include/ImageMagick-7/MagickCore/token.h \
+ /usr/local/include/ImageMagick-7/MagickCore/transform.h \
+ /usr/local/include/ImageMagick-7/MagickCore/threshold.h \
+ /usr/local/include/ImageMagick-7/MagickCore/utility.h \
+ /usr/local/include/ImageMagick-7/MagickCore/vision.h \
+ /usr/local/include/ImageMagick-7/MagickCore/xml-tree.h \
+ /usr/local/include/ImageMagick-7/MagickCore/xwindow.h \
+ /usr/local/include/ImageMagick-7/MagickWand/animate.h \
+ /usr/local/include/ImageMagick-7/MagickWand/compare.h \
+ /usr/local/include/ImageMagick-7/MagickWand/composite.h \
+ /usr/local/include/ImageMagick-7/MagickWand/conjure.h \
+ /usr/local/include/ImageMagick-7/MagickWand/convert.h \
+ /usr/local/include/ImageMagick-7/MagickWand/deprecate.h \
+ /usr/local/include/ImageMagick-7/MagickWand/pixel-wand.h \
+ /usr/local/include/ImageMagick-7/MagickWand/display.h \
+ /usr/local/include/ImageMagick-7/MagickWand/drawing-wand.h \
+ /usr/local/include/ImageMagick-7/MagickWand/identify.h \
+ /usr/local/include/ImageMagick-7/MagickWand/import.h \
+ /usr/local/include/ImageMagick-7/MagickWand/wandcli.h \
+ /usr/local/include/ImageMagick-7/MagickWand/operation.h \
+ /usr/local/include/ImageMagick-7/MagickWand/magick-cli.h \
+ /usr/local/include/ImageMagick-7/MagickWand/magick-property.h \
+ /usr/local/include/ImageMagick-7/MagickWand/magick-image.h \
+ /usr/local/include/ImageMagick-7/MagickWand/mogrify.h \
+ /usr/local/include/ImageMagick-7/MagickWand/montage.h \
+ /usr/local/include/ImageMagick-7/MagickWand/pixel-iterator.h \
+ /usr/local/include/ImageMagick-7/MagickWand/MagickWand.h \
+ /usr/local/include/ImageMagick-7/MagickWand/stream.h \
+ /usr/local/include/ImageMagick-7/MagickWand/wand-view.h
+
+/usr/include/stdc-predef.h:
+
+include/config.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/features.h:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap-16.h:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
+/usr/include/time.h:
+
+/usr/include/x86_64-linux-gnu/sys/select.h:
+
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigset.h:
+
+/usr/include/x86_64-linux-gnu/bits/time.h:
+
+/usr/include/x86_64-linux-gnu/sys/sysmacros.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
+
+/usr/include/alloca.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
+
+/usr/include/stdio.h:
+
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/wchar.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
+
+/usr/include/string.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/unistd.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
+/usr/include/x86_64-linux-gnu/bits/confname.h:
+
+/usr/include/getopt.h:
+
+/usr/include/x86_64-linux-gnu/sys/times.h:
+
+/usr/include/assert.h:
+
+include/zbar.h:
+
+/usr/local/include/wand/MagickWand.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/magick-config.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/magick-baseconfig.h:
+
+/usr/include/math.h:
+
+/usr/include/x86_64-linux-gnu/bits/math-vector.h:
+
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
+
+/usr/include/x86_64-linux-gnu/bits/huge_val.h:
+
+/usr/include/x86_64-linux-gnu/bits/huge_valf.h:
+
+/usr/include/x86_64-linux-gnu/bits/huge_vall.h:
+
+/usr/include/x86_64-linux-gnu/bits/inf.h:
+
+/usr/include/x86_64-linux-gnu/bits/nan.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathdef.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/method-attribute.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/MagickCore.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/method-attribute.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/magick-type.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/animate.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/annotate.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/draw.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/geometry.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/image.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/blob.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/stream.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/pixel.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/colorspace.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/cache-view.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/color.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/exception.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/semaphore.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/composite.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/compress.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/effect.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/morphology.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/layer.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/locale_.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/linked-list.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/monitor.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/profile.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/string_.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/quantum.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/resample.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/resize.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/timer.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/type.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/artifact.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/attribute.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/cache.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/channel.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/cipher.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/client.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/coder.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/colormap.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/compare.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/configure.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/constitute.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/decorate.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/delegate.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/deprecate.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/magick.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/display.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/distort.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/distribute-cache.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/enhance.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/feature.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/fourier.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/fx.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/gem.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/random_.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/histogram.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/identify.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/image-view.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/list.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/log.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/magic.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/matrix.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/memory_.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/module.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/version.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/mime.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/montage.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/opencl.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/option.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/paint.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/pixel-accessor.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/policy.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/prepress.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/property.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/quantize.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/registry.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/resource_.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/segment.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/shear.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/signature.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/splay-tree.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/static.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/statistic.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/token.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/transform.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/threshold.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/utility.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/vision.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/xml-tree.h:
+
+/usr/local/include/ImageMagick-7/MagickCore/xwindow.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/animate.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/compare.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/composite.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/conjure.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/convert.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/deprecate.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/pixel-wand.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/display.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/drawing-wand.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/identify.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/import.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/wandcli.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/operation.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/magick-cli.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/magick-property.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/magick-image.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/mogrify.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/montage.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/pixel-iterator.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/MagickWand.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/stream.h:
+
+/usr/local/include/ImageMagick-7/MagickWand/wand-view.h:

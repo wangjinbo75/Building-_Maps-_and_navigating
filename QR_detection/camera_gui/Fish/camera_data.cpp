@@ -5,9 +5,8 @@ Camera::Camera()
    buffers = NULL;
    n_buffers = 0;
    index = -1;
-   fps = 5 ;
+   fps = 30 ;
    force_format = 1;
-
 
    CameraInit();
    v4l2_grab();
