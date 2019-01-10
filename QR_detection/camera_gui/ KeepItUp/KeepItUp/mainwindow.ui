@@ -6,51 +6,38 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>600</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLabel" name="VideoWindows">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>640</width>
-      <height>480</height>
+      <width>1920</width>
+      <height>1300</height>
      </rect>
     </property>
     <property name="text">
      <string>TextLabel</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="StartAndStop">
+   <widget class="QLabel" name="LabelTest">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>490</y>
-      <width>99</width>
-      <height>27</height>
+      <x>20</x>
+      <y>700</y>
+      <width>81</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Stop</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Test_Label">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>490</y>
-      <width>67</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;TextLabel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>test</string>
     </property>
    </widget>
   </widget>
@@ -59,7 +46,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>640</width>
+     <width>1920</width>
      <height>31</height>
     </rect>
    </property>

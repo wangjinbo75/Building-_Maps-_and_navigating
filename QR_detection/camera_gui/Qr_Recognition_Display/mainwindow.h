@@ -33,34 +33,39 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-
+    explicit MainWindow(QWidget *parent = 0);//
     ~MainWindow();
+   //全局变量
+    static double DisX;
+    double QrSize    ; //实际二维码尺寸
 
-private slots:
-    void on_pushButton_clicked();
-    void on_start_clicked();
+
+    //摄像头坐标
+    int GetCoordinateX[4];
+    int GetCoordinateY[4];
+    double DisXYZ[3];
+
+public slots:
+    void paintEvent(QPaintEvent *);
+    void on_StartAndStop_clicked();
+    void GetOneFrameAndDetectQR();
 
 private:
     Ui::MainWindow *ui;
     cv::Mat image;
     cv::VideoCapture *Cam;
-   // cv::Mat frame;
-    int GetCoordinateX[4];
-    int GetCoordinateY[4];
 
-
-    QTimer    *timer;
-    CvCapture *cam;// 视频获取结构， 用来作为视频获取函数的一个参数
-    IplImage  *frame;//申请IplImage类型指针，就是申请内存空间来存放每一帧图像
+    QTimer    *VideoTimer;   //时间
+    CvCapture *cam;     // 视频获取结构， 用来作为视频获取函数的一个参数
+    IplImage  *frame;   //申请IplImage类型指针，就是申请内存空间来存放每一帧图像
     IplImage  *input;
     zbar::ImageScanner *scanner;  //zbar
     QString S;
     int state;
     int value;
-    //摄像头上下视角
-    int QRDistance(int GetCoordinateX[4],int  GetCoordinateY[4],cv::Mat grayFrame); //  得到四个坐标 结算出来剧摄像头距离
+    QPushButton *aButton;
 
+    double * QRDistance(int * GetCoordinateX,int *GetCoordinateY,cv::Mat grayFrame,double QrSize);
 
 };
 

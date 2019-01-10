@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 4.8.7
+** Created by: Qt User Interface Compiler version 5.12.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,17 +10,14 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QMainWindow>
-#include <QtGui/QMenuBar>
-#include <QtGui/QPushButton>
-#include <QtGui/QStatusBar>
-#include <QtGui/QToolBar>
-#include <QtGui/QWidget>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QToolBar>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -28,10 +25,9 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QLabel *label;
-    QPushButton *pushButton;
-    QPushButton *start;
-    QLabel *label_num;
+    QLabel *VideoWindows;
+    QPushButton *StartAndStop;
+    QLabel *Test_Label;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -43,18 +39,15 @@ public:
         MainWindow->resize(640, 600);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        label = new QLabel(centralWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(0, 0, 640, 480));
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(0, 490, 99, 27));
-        start = new QPushButton(centralWidget);
-        start->setObjectName(QString::fromUtf8("start"));
-        start->setGeometry(QRect(130, 490, 99, 27));
-        label_num = new QLabel(centralWidget);
-        label_num->setObjectName(QString::fromUtf8("label_num"));
-        label_num->setGeometry(QRect(250, 490, 67, 21));
+        VideoWindows = new QLabel(centralWidget);
+        VideoWindows->setObjectName(QString::fromUtf8("VideoWindows"));
+        VideoWindows->setGeometry(QRect(0, 0, 640, 480));
+        StartAndStop = new QPushButton(centralWidget);
+        StartAndStop->setObjectName(QString::fromUtf8("StartAndStop"));
+        StartAndStop->setGeometry(QRect(0, 490, 99, 27));
+        Test_Label = new QLabel(centralWidget);
+        Test_Label->setObjectName(QString::fromUtf8("Test_Label"));
+        Test_Label->setGeometry(QRect(110, 490, 67, 21));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -74,11 +67,10 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("MainWindow", "TextLabel", 0, QApplication::UnicodeUTF8));
-        pushButton->setText(QApplication::translate("MainWindow", "Open file", 0, QApplication::UnicodeUTF8));
-        start->setText(QApplication::translate("MainWindow", "\345\274\200\345\247\213", 0, QApplication::UnicodeUTF8));
-        label_num->setText(QApplication::translate("MainWindow", "<html><head/><body><p>TextLabel</p></body></html>", 0, QApplication::UnicodeUTF8));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        VideoWindows->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        StartAndStop->setText(QApplication::translate("MainWindow", "Stop", nullptr));
+        Test_Label->setText(QApplication::translate("MainWindow", "<html><head/><body><p>TextLabel</p></body></html>", nullptr));
     } // retranslateUi
 
 };
